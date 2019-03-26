@@ -27,6 +27,32 @@ previous_block_header = {
 }
 
 # you should edit the effective balance to be the last two digits from your user id
-effective_balance = 75
+effective_balance = 12
 
+# set ecdsa key pair
+sk = ecdsa.SigningKey.generate(curve=ecdsa.SECP256k1)
+vk = sk.get_verifying_key()
+vk_HEX = vk.to_string().hex()
+
+sig = sk.sign(bytes.fromhex(previous_block_header['generationSignature']))
+sig_HEX = sig.hex()
+
+sig_hash = hashlib.sha256(sig).hexdigest()
+
+# first 8 bytes (64 bit - 16 hex values)
+hit_value = sig_hash[:8*2]
+
+print('signature for hit', sig_HEX)
+print('hit value', hit_value, int(hit_value, 16))
+
+# calculate estimated time T = T_b * S * B_e -> S = hit_value / (T_b * B_e)
+S = int(hit_value, 16) / (previous_block_header['baseTarget'] * effective_balance)
+
+print(S)
+
+# Hello World verification test
+hw_sig_HEX = sk.sign(b'Hello world').hex()
+
+print('public key', vk_HEX)
+print('Hello world signature', hw_sig_HEX)
 

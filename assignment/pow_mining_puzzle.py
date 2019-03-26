@@ -55,7 +55,6 @@ def findValidBlock():
         block_serialised = json.dumps(example_block_header, sort_keys=True).encode()
 
         # Double SHA256 hashing of the serialised block
-        # block_hash=hashlib.sha256(hashlib.sha256(block_serialised).digest()).hexdigest()
         block_hash = hashlib.sha256(hashlib.sha256(block_serialised).digest()).hexdigest()
 
         # find valid block for the current difficulty 0.001
