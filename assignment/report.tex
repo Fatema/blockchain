@@ -1,0 +1,55 @@
+\documentclass[11pt]{article}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{mwe}
+\usepackage{float}
+\usepackage{multicol}
+
+\usepackage[english]{babel}
+\usepackage[backend=biber]{biblatex}
+
+\addbibresource{ref.bib}
+
+\graphicspath{{training-data/}}
+
+
+\title{Blockchain and Cryptocurrencies Assignment}
+\author{Fatema Alkhanaizi}
+\date{\today}
+
+\begin{document}
+    \maketitle 
+    \section*{Task 1. Mining Puzzles}
+    \begin{enumerate}
+        \item \textbf{userID:} mmgw12
+        \item \textbf{The block hash target:} 0x000003E7FC180000000000000000000000000000000000000000000000000000
+        \item \textbf{The nonce value of valid block:} 6162644
+        \item \textbf{Number of double hashes performed:} 6162644
+        \item \textbf{Time taken:} 110079 ms
+        \item \textbf{Estimate how long it will take to mine a block:} \\
+        let \textbf{target\_1} = 0x00000000FFFF0000000000000000000000000000000000000000000000000000
+        and let \textbf{current\_target} = \textbf{target\_1}/ \textbf{difficulty}
+        \begin{itemize}
+            \item difficulty at 1
+            \begin{align*}
+\textbf{current\_target} =& \textbf{ target\_1}\\
+                         =&   \text{0x00000000FFFF0000000000000000000000000000000000000000000000000000}
+            \end{align*}
+            for this case there are 8*4+2 leading zeros so it can be approximated that $2^{34}$ hashes will be required. 
+            \item difficulty at $7,454,968,648,263$
+            \begin{align*}
+                \textbf{current\_target} =& \textbf{target\_1} / 7,454,968,648,263 \\
+                                         =&   \text{0x00000000000000000025C1910000015800000000000000000000000000000000}
+                            \end{align*}
+            for this case there are 18*4+2 leading zeros so it can be approximated that $2^{74}$ hashes will be required. 
+        \end{itemize}
+        
+        
+        
+    \end{enumerate}
+\end{document}
